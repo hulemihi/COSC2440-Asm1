@@ -12,16 +12,33 @@ public class Student {
 		this.studentName = studentName;
 		this.birthdate = birthdate;
 	}
-	
-	//	Getter
+
 	public String getStudentID() {
 		return studentID;
 	}
+
+	public void setStudentID(String studentID) {
+		this.studentID = studentID;
+	}
+
 	public String getStudentName() {
 		return studentName;
 	}
+
+	public void setStudentName(String studentName) {
+		this.studentName = studentName;
+	}
+
 	public String getBirthdate() {
 		return birthdate;
+	}
+
+	public void setBirthdate(String birthdate) {
+		this.birthdate = birthdate;
+	}
+	
+	public String toString() {
+		return "StudentID: " + this.studentID + ", Name: " + this.studentName + ", Birthdate: " + this.birthdate;
 	}
 	
 }
