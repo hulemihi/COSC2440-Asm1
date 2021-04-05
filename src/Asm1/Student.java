@@ -1,21 +1,27 @@
 package Asm1;
 
 public class Student {
-	private String id;
-	private String name;
+	private String studentID;
+	private String studentName;
 	private String birthdate;
 	
 	//	Constructor
-	public Student(String id, String name, String birthdate) {
+	public Student(String studentID, String studentName, String birthdate) {
 		super();
-		this.id = id;
-		this.name = name;
+		this.studentID = studentID;
+		this.studentName = studentName;
 		this.birthdate = birthdate;
 	}
 	
-	public static void main (String args[]) {
-		System.out.println("helo");
-		System.out.println("helo");
-		System.out.println("helo");
+	//	Getter
+	public String getStudentID() {
+		return studentID;
 	}
+	public String getStudentName() {
+		return studentName;
+	}
+	public String getBirthdate() {
+		return birthdate;
+	}
+	
 }
