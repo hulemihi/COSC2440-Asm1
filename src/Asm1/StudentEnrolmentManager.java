@@ -2,9 +2,9 @@ package Asm1;
 
 public interface StudentEnrolmentManager {
 	
-	public void add(Student student, Course course, String semester);
+	public void add(StudentEnrolment se);
 	public void update();
-	public void getOne(int seID);
+	public void getOne();
 	public void getAll();
 	
 }

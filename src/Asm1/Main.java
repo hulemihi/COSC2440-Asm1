@@ -27,20 +27,30 @@ public class Main {
 		courseList.add(eeee);
 		
 		//	Enrollment
-		List<StudentEnrolment> enrol = new ArrayList<>();
-		StudentEnrolment e1 = new StudentEnrolment();
-		e1.add(hieu, sepm,"2020");
-		enrol.add(e1);
+		StudentEnrolment e1 = new StudentEnrolment(hieu, sepm,"2020");
+		StudentEnrolment e2 = new StudentEnrolment(hieu, sadi,"2020");
+		StudentEnrolment e3 = new StudentEnrolment(hieu, eeee,"2020");
+		StudentEnrolment e4 = new StudentEnrolment(minh, sepm,"2020");
+		StudentEnrolment e5 = new StudentEnrolment(nghia, sepm,"2020");
 		
 		
+		//	System
+//		List<StudentEnrolmentSystem> enrolSystem = new ArrayList<StudentEnrolmentSystem>();
+		StudentEnrolmentSystem ses = new StudentEnrolmentSystem();
+		ses.add(e1);
+		ses.add(e2);
+		ses.add(e3);
+		ses.add(e4);
+		ses.add(e5);
+		
+		ses.displayAllStudent();
+		System.out.println("----------");
+		ses.displayAllCourse();
+		System.out.println("----------");
+		ses.getAll();
+		
+	
 		
 		
-		
-//		enrol.add(nghia, sepm, "2020");
-//		enrol.add(minh, sepm, "2020");
-//		enrol.add(hieu, sadi, "2020");
-//		enrol.add(minh, sadi," 2020");
-		
-		enrol.displayAllStudent();	
 	}
 }

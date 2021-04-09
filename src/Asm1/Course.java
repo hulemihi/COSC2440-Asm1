@@ -38,7 +38,7 @@ public class Course {
 	}
 	
 	public String toString() {
-		return "CourseID: " + this.courseID + ", Name: " + this.courseName + ", Credits: " + this.credits;
+		return this.courseID + "	" + this.courseName + "	" + this.credits;
 	}
 
 

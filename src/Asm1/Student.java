@@ -38,7 +38,12 @@ public class Student {
 	}
 	
 	public String toString() {
-		return "StudentID: " + this.studentID + ", Name: " + this.studentName + ", Birthdate: " + this.birthdate;
+		return  this.studentID + "	" + this.studentName + "	" + this.birthdate;
 	}
 	
+	public boolean checkStudentList (String id) {
+		if (this.getStudentID().equals(id))
+			return true;
+		return false;
+	}
 }
