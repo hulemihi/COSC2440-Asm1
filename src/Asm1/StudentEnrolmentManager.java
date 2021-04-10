@@ -4,7 +4,8 @@ public interface StudentEnrolmentManager {
 	
 	public void add(StudentEnrolment se);
 	public void update();
-	public void getOne();
+	public void delete(StudentEnrolment se);
+	public void getOne(Student student, Course course, String semester);
 	public void getAll();
 	
 }

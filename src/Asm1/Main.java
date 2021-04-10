@@ -10,6 +10,9 @@ public class Main {
 		Student hieu = new Student("1", "Hieu", "1998");
 		Student minh = new Student("2", "Minh", "2000");
 		Student nghia = new Student("3", "Nghia", "1999");
+		Student tri = new Student("4", "Tri", "1998");
+		Student den = new Student("5", "Tri", "1998");
+		
 		
 		List<Student> studentList = new ArrayList<>();
 		studentList.add(hieu);
@@ -48,9 +51,21 @@ public class Main {
 		ses.displayAllCourse();
 		System.out.println("----------");
 		ses.getAll();
-		
-	
-		
+		System.out.println("----------");
+		ses.getOne(nghia, eeee, null);
+		ses.getOne(hieu, sepm, "2020");
+		System.out.println("----------");
+		ses.delete(e5);
+		ses.getAll();
+		System.out.println("----------");
+		ses.addStudent(nghia);
+		ses.addStudent(tri);
+		ses.displayAllStudent();
+		System.out.println("----------");
+		ses.deleteStudent(den);
+		ses.displayAllStudent();
+		ses.deleteStudent(tri);
+		ses.displayAllStudent();
 		
 	}
 }
