@@ -52,20 +52,26 @@ public class Main {
 		System.out.println("----------");
 		ses.getAll();
 		System.out.println("----------");
+		
 		ses.getOne(nghia, eeee, null);
 		ses.getOne(hieu, sepm, "2020");
 		System.out.println("----------");
+		
 		ses.delete(e5);
 		ses.getAll();
 		System.out.println("----------");
-		ses.addStudent(nghia);
-		ses.addStudent(tri);
+		
+//		ses.addStudent(nghia);
+//		ses.addStudent(tri);
 		ses.displayAllStudent();
 		System.out.println("----------");
+		
 		ses.deleteStudent(den);
 		ses.displayAllStudent();
 		ses.deleteStudent(tri);
+		ses.deleteStudent(hieu);
 		ses.displayAllStudent();
+		ses.getAll();
 		
 	}
 }
