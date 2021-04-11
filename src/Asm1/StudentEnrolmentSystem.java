@@ -1,7 +1,9 @@
 package Asm1;
 
+
+import java.io.*;
 import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.List;
 import java.util.Scanner;
 
 public class StudentEnrolmentSystem implements StudentEnrolmentManager{
@@ -90,7 +92,7 @@ public class StudentEnrolmentSystem implements StudentEnrolmentManager{
 	
 	//	Display all student enrollments in StudentEnrolment system.
 	@Override
-	public void getAll() {
+	public  void getAll() {
 		// TODO Auto-generated method stub
 		System.out.println("Student enrollment: ");
 		for (StudentEnrolment se: enrolmentList) {
@@ -106,50 +108,50 @@ public class StudentEnrolmentSystem implements StudentEnrolmentManager{
 	 **/
 	
 	//	Add student into StudentEnrolment system. 
-	public void addStudent() {
-		Scanner getInput = new Scanner(System.in);
-		//	Get student ID	
-		System.out.println("Enter student ID: ");
-		String studentID = 	getInput.nextLine().trim();
-		if (checkExistStudent(studentID) == false) {
-			System.out.println("Student does not exist! Create a new student? (y for yes,anything else for no)");
-			String check = getInput.nextLine().trim();
-			if (check.equals("y")) {
-				System.out.println("Student name: ");
-				String studentName = getInput.nextLine().trim();
-				System.out.println("Student birthdate: ");
-				String studentBd = getInput.nextLine().trim();
-				Student student = new Student(studentID, studentName, studentBd);
-				studentList.add(student);
-			}
-			else return;
-		}
-		//	Get semester
-		System.out.println("Enter semester: ");
-		String semester = getInput.nextLine().trim();
-		//	Get course		
-		System.out.println("Enter course ID: ");
-		String courseID = getInput.nextLine().trim();
-		if (checkExistCourse(courseID) == false) {
-			System.out.println("Course does not exist! Create a new course? (y for yes,anything else for no)");
-			String check = getInput.nextLine().trim();
-			if (check.equals("y")) {
-				System.out.println("Course name: ");
-				String courseName = getInput.nextLine().trim();
-				System.out.println("Course crefit: ");
-				int courseCredits = getInput.nextInt();
-				Course course = new Course(courseID, courseName, courseCredits);
-				courseList.add(course);
-			}
-			else return;
-		}
-		System.out.println("");
-//		else {
-//			
+//	public void addStudent() {
+//		Scanner getInput = new Scanner(System.in);
+//		//	Get student ID	
+//		System.out.println("Enter student ID: ");
+//		String studentID = 	getInput.nextLine().trim();
+//		if (checkExistStudent(studentID) == false) {
+//			System.out.println("Student does not exist! Create a new student? (y for yes,anything else for no)");
+//			String check = getInput.nextLine().trim();
+//			if (check.equals("y")) {
+//				System.out.println("Student name: ");
+//				String studentName = getInput.nextLine().trim();
+//				System.out.println("Student birthdate: ");
+//				String studentBd = getInput.nextLine().trim();
+//				Student student = new Student(studentID, studentName, studentBd);
+//				studentList.add(student);
+//			}
+//			else return;
 //		}
-		//	Create an enrollment
-//		StudentEnrolment se = new StudentEnrolment(studentList., course, semester);
-	}
+//		//	Get semester
+//		System.out.println("Enter semester: ");
+//		String semester = getInput.nextLine().trim();
+//		//	Get course		
+//		System.out.println("Enter course ID: ");
+//		String courseID = getInput.nextLine().trim();
+//		if (checkExistCourse(courseID) == false) {
+//			System.out.println("Course does not exist! Create a new course? (y for yes,anything else for no)");
+//			String check = getInput.nextLine().trim();
+//			if (check.equals("y")) {
+//				System.out.println("Course name: ");
+//				String courseName = getInput.nextLine().trim();
+//				System.out.println("Course crefit: ");
+//				int courseCredits = getInput.nextInt();
+//				Course course = new Course(courseID, courseName, courseCredits);
+//				courseList.add(course);
+//			}
+//			else return;
+//		}
+//		System.out.println("");
+////		else {
+////			
+////		}
+//		//	Create an enrollment
+////		StudentEnrolment se = new StudentEnrolment(studentList., course, semester);
+//	}
 	
 	//	Update student into StudentEnrolment system. 
 	public void updateStudent(Student student) {
@@ -205,6 +207,7 @@ public class StudentEnrolmentSystem implements StudentEnrolmentManager{
 	
 	//	Prints all courses offered in 1 semester.	
 	public void displayAllCourses (String semester) {
+		System.out.println(semester + " courses: ");
 		for (StudentEnrolment se: enrolmentList) {
 			if (se.getSemester().equals(semester)) {
 				System.out.println(se.getCourse());
@@ -249,5 +252,19 @@ public class StudentEnrolmentSystem implements StudentEnrolmentManager{
 		return false;
 	}
 	
-	
+	public static StudentEnrolmentSystem getAllEnrolment() throws FileNotFoundException {
+		Scanner se = new Scanner(new File("default.csv"));
+		StudentEnrolmentSystem enrolmentList = new StudentEnrolmentSystem();
+		while (se.hasNext()) {
+			String nextLine = se.nextLine();
+			String[] seSplit = nextLine.split(",");
+			Student student = new Student(seSplit[0], seSplit[1], seSplit[2]);
+			Course course = new Course(seSplit[3], seSplit[4], seSplit[5]);
+			StudentEnrolment enrolment = new StudentEnrolment(student, course, seSplit[6]);
+			enrolmentList.add(enrolment);
+		}
+		se.close();
+		return enrolmentList;
+	}
+
 }

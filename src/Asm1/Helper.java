@@ -40,7 +40,7 @@ public class Helper {
 		Scanner getCredit = new Scanner(System.in);
 		int credit = getCredit.nextInt();
 		
-		Course course = new Course(courseID, courseName, credit);
+		// Course course = new Course(courseID, courseName, credit);
 	}
 	
 	

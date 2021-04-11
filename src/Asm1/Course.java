@@ -3,10 +3,10 @@ package Asm1;
 public class Course {
 	private String courseID;
 	private String courseName;
-	private int credits;
+	private String credits;
 	
 	//	Constructor
-	public Course(String courseID, String courseName, int credits) {
+	public Course(String courseID, String courseName, String credits) {
 		super();
 		this.courseID = courseID;
 		this.courseName = courseName;
@@ -29,11 +29,11 @@ public class Course {
 		this.courseName = courseName;
 	}
 
-	public int getCredits() {
+	public String getCredits() {
 		return credits;
 	}
 
-	public void setCredits(int credits) {
+	public void setCredits(String credits) {
 		this.credits = credits;
 	}
 	
