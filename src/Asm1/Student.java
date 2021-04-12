@@ -38,7 +38,7 @@ public class Student {
 	}
 	
 	public String toString() {
-		return  this.studentID + "	" + this.studentName + "	" + this.birthdate;
+		return  this.studentID + ", " + this.studentName + ", " + this.birthdate;
 	}
 	
 	public boolean checkStudentList (String id) {
