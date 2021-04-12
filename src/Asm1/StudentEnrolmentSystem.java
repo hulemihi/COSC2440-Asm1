@@ -252,8 +252,8 @@ public class StudentEnrolmentSystem implements StudentEnrolmentManager{
 		return false;
 	}
 	
-	public static StudentEnrolmentSystem getAllEnrolment() throws FileNotFoundException {
-		Scanner se = new Scanner(new File("default.csv"));
+	public static StudentEnrolmentSystem getAllEnrolment(String fileName) throws FileNotFoundException {
+		Scanner se = new Scanner(new File(fileName));
 		StudentEnrolmentSystem enrolmentList = new StudentEnrolmentSystem();
 		while (se.hasNext()) {
 			String nextLine = se.nextLine();

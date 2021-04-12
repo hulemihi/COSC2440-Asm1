@@ -9,95 +9,116 @@ import java.util.Scanner;
 public class Main {
 	public static void main(String argsp[]) throws FileNotFoundException {
 		
-//		//	Student
-//		Student hieu = new Student("1", "Hieu", "1998");
-//		Student minh = new Student("2", "Minh", "2000");
-//		Student nghia = new Student("3", "Nghia", "1999");
-//		Student tri = new Student("4", "Tri", "1998");
-//		Student den = new Student("5", "Tri", "1998");
-//		
-//		
-//		List<Student> studentList = new ArrayList<>();
-//		studentList.add(hieu);
-//		studentList.add(minh);
-//		studentList.add(nghia);
-//		
-//		//	Course
-//		Course sepm = new Course("1", "SEPM", 4);
-//		Course sadi = new Course("2", "SADI", 8);
-//		Course eeee = new Course("3", "EEEE", 4);
-//		
-//		List<Course> courseList = new ArrayList<>();
-//		courseList.add(sepm);
-//		courseList.add(sadi);
-//		courseList.add(eeee);
-//		
-//		//	Enrollment
-//		StudentEnrolment e1 = new StudentEnrolment(hieu, sepm,"2020");
-//		StudentEnrolment e2 = new StudentEnrolment(hieu, sadi,"2020");
-//		StudentEnrolment e3 = new StudentEnrolment(hieu, eeee,"2020");
-//		StudentEnrolment e4 = new StudentEnrolment(minh, sepm,"2020");
-//		StudentEnrolment e5 = new StudentEnrolment(nghia, sepm,"2020");
-//		
-//		
-//		//	System
-////		List<StudentEnrolmentSystem> enrolSystem = new ArrayList<StudentEnrolmentSystem>();
-//		StudentEnrolmentSystem ses = new StudentEnrolmentSystem();
-//		ses.add(e1);
-//		ses.add(e2);
-//		ses.add(e3);
-//		ses.add(e4);
-//		ses.add(e5);
-//		
-//		ses.displayAllStudent();
-//		System.out.println("----------");
-//		ses.displayAllCourse();
-//		System.out.println("----------");
-//		ses.getAll();
-//		System.out.println("----------");
-//		
-//		ses.getOne(nghia, eeee, null);
-//		ses.getOne(hieu, sepm, "2020");
-//		System.out.println("----------");
-//		
-//		ses.delete(e5);
-//		ses.getAll();
-//		System.out.println("----------");
-//		
-////		ses.addStudent(nghia);
-////		ses.addStudent(tri);
-//		ses.displayAllStudent();
-//		System.out.println("----------");
-//		
-//		ses.deleteStudent(den);
-//		ses.displayAllStudent();
-//		ses.deleteStudent(tri);
-//		ses.deleteStudent(hieu);
-//		ses.displayAllStudent();
-//		ses.getAll();
-		
+		runEnrolmentSystem();
+		// Scanner getInput = new Scanner(System.in);
+		// System.out.println("------------------------------------- ");
+		// System.out.println("Welcome to Student Enrolment System! \n");
+		// System.out.println("Current enrolments file: default.csv ");
+		// System.out.println("Do you want to change enrolments file? (y for yes,anything else for no) ");
+
+		// String check = getInput.nextLine().trim();
+		// if (check.equals("y")) {
+			
+		// }
+		// else {
+		// 	// System.out.println(enrolmentList = StudentEnrolmentSystem.getAllEnrolment());
+		// 	StudentEnrolmentSystem se = StudentEnrolmentSystem.getAllEnrolment();
+		// 	se.getAll();
+		// 	System.out.println("------------------------------------- ");
+		// 	se.displayAllCourses("2021A");
+		// 	System.out.println("------------------------------------- ");
+		// 	se.displayCouse("S101312", "2020C");
+		// 	System.out.println("------------------------------------- ");
+		// 	se.displayStudent("PHYS1230", "2021A");
+		// }
+
+	}
+
+	public static void runEnrolmentSystem() throws FileNotFoundException {
 		Scanner getInput = new Scanner(System.in);
+		String fileName = "";
 		System.out.println("------------------------------------- ");
 		System.out.println("Welcome to Student Enrolment System! \n");
-		System.out.println("Current enrolments file: default.csv ");
-		System.out.println("Do you want to change enrolments file? (y for yes,anything else for no) ");
+		System.out.println("------------------------------------- ");
+		boolean checkFile = true;
+		do {
+			System.out.println("Current enrolments file: default.csv ");
+			System.out.println("Do you want to change enrolments file? (y for yes,anything else for no) ");
+			String check = getInput.nextLine().trim();
+			if (check.equals("y")) {
+				System.out.println("Enter new directory: ");
+				fileName = getInput.nextLine().trim();
+			} else {
+				fileName = "default.csv";
+			}
+			try {
+				StudentEnrolmentSystem se = StudentEnrolmentSystem.getAllEnrolment(fileName);
+				System.out.println("------------------------------------- ");
+				se.getAll();
+				checkFile = true;
+				runMenu(se);
+			} catch (Exception ex) {
+				System.out.println("File not found!");
+				checkFile = false;
+			} 
+		} while (checkFile == false);
+		
+	}
+	
+	public static void runMenu(StudentEnrolmentSystem se) {
+		Scanner getInput = new Scanner(System.in);
+		String student = "";
+		String course = "";
+		String semester = "";
 
+		System.out.println("------------------------------------- ");
+		System.out.println("Student Enrolment System!");
+		System.out.println("Please choose the process: ");
+		System.out.println("	1. ");
+		System.out.println("	2. Display all courses for 1 student in 1 semester. ");
+		System.out.println("	4. Display all students of 1 course in 1 semester.");
+		System.out.println("	4. Display all courses offered in 1 semester. ");
+		System.out.println("Enter the process: ");
+		
+		String process = getInput.nextLine().trim();
+		switch (process) {
+			case "1":
+				System.out.println("------------------------------------- ");
+			 
+				break;
+			case "2":
+				System.out.println("------------------------------------- ");
+				System.out.println("Display all courses for 1 student in 1 semester. ");
+				System.out.println("Enter student ID: ");
+				student = getInput.nextLine().trim();
+				System.out.println("Enter semester: ");
+				semester = getInput.nextLine().trim();
+				se.displayCouse(student, semester);
+				break;
+			case "3":
+				System.out.println("------------------------------------- ");
+				System.out.println("Display all students of 1 course in 1 semester.");
+				System.out.println("Enter course ID: ");
+				course = getInput.nextLine().trim();
+				System.out.println("Enter semester: ");
+				semester = getInput.nextLine().trim();
+				se.displayStudent(course, semester);
+				break;
+			case "4":
+				System.out.println("------------------------------------- ");
+				System.out.println("Display all courses offered in 1 semester.");
+				System.out.println("Enter semester: ");
+				semester = getInput.nextLine().trim();
+				se.displayAllCourses(semester);
+				break;
+		}	
+		System.out.println("------------------------------------- ");
+		System.out.println("Do you want to continue? (y for yes,anything else for no) ");
 		String check = getInput.nextLine().trim();
 		if (check.equals("y")) {
-			
+			runMenu(se);
+		}  else {
+			System.out.println("Quit Enrolment System! ");
 		}
-		else {
-			// System.out.println(enrolmentList = StudentEnrolmentSystem.getAllEnrolment());
-			StudentEnrolmentSystem se = StudentEnrolmentSystem.getAllEnrolment();
-			se.getAll();
-			System.out.println("------------------------------------- ");
-			se.displayAllCourses("2021A");
-			System.out.println("------------------------------------- ");
-			se.displayCouse("S101312", "2020C");
-			System.out.println("------------------------------------- ");
-			se.displayStudent("PHYS1230", "2021A");
-		}
-		
-
 	}
 }
