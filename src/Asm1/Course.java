@@ -1,5 +1,6 @@
 package Asm1;
 
+
 public class Course {
 	private String courseID;
 	private String courseName;
@@ -13,6 +14,7 @@ public class Course {
 		this.credits = credits;
 	}
 
+	//	Getter and Setter
 	public String getCourseID() {
 		return courseID;
 	}
@@ -40,6 +42,5 @@ public class Course {
 	public String toString() {
 		return this.courseID + ", " + this.courseName + ", " + this.credits;
 	}
-
 
 }

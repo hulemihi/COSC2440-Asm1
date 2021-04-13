@@ -43,10 +43,5 @@ public class StudentEnrolment {
 		return this.student + ", " + this.course + ", " + this.semester;
 	}
 	
-	public String toFileString() {
-		return String.join(",", this.student.getStudentID(), this.student.getStudentName(), this.student.getBirthdate(),
-								this.course.getCourseID(), this.course.getCourseName(), this.course.getCredits(),
-								this.semester);
-	}
 }
 

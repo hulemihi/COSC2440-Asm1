@@ -1,12 +1,12 @@
 package Asm1;
 
+
 public interface StudentEnrolmentManager {
-	
-	public void add(StudentEnrolment se);
-	public void update(StudentEnrolmentSystem ses,StudentEnrolment se);
-	public void delete(StudentEnrolment se);
-	public void getOne(Student student, Course course, String semester);
-	public void getAll();
-    
-	
+
+	public boolean add(StudentEnrolment se);
+	public boolean update(StudentEnrolmentSystem ses,StudentEnrolment se);
+	public boolean delete(StudentEnrolment se);
+	public boolean getOne(Student student, Course course, String semester);
+	public boolean getAll();
+
 }

@@ -1,5 +1,6 @@
 package Asm1;
 
+
 public class Student {
 	private String studentID;
 	private String studentName;
@@ -13,6 +14,7 @@ public class Student {
 		this.birthdate = birthdate;
 	}
 
+	//	Getter and Setter
 	public String getStudentID() {
 		return studentID;
 	}
@@ -40,10 +42,5 @@ public class Student {
 	public String toString() {
 		return  this.studentID + ", " + this.studentName + ", " + this.birthdate;
 	}
-	
-	public boolean checkStudentList (String id) {
-		if (this.getStudentID().equals(id))
-			return true;
-		return false;
-	}
+
 }

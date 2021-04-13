@@ -1,7 +1,9 @@
 package Asm1;
 
+
 import java.io.FileNotFoundException;
 import java.util.Scanner;
+
 
 public class Main {
 	private static StudentEnrolmentSystem ses;
@@ -72,7 +74,7 @@ public class Main {
 		}
 		System.out.println("------------------------------------- ");
 		System.out.print("Do you want to continue? (y for yes,anything else for no) ");
-		String check = getInput.nextLine().trim();
+		String check = getInput.nextLine().trim().toLowerCase();
 		if (check.equals("y")) {
 			runMenu(ses);
 		}  else {
@@ -156,27 +158,37 @@ public class Main {
 		if (option.equals("1")) { 
 			System.out.println("------------------------------------- ");
 			System.out.println("Display all courses for 1 student in 1 semester. ");
-			System.out.print("Enter student ID: ");
-			student = getInput.nextLine().trim();
+			do {
+				System.out.print("Enter student ID: ");
+				student = getInput.nextLine().trim().toUpperCase();
+				if (ses.checkExistStudent(student) == false) {
+					System.out.println("Wrong input!");
+				}
+			} while (ses.checkExistStudent(student) == false);
 			System.out.print("Enter semester: ");
-			semester = getInput.nextLine().trim();
+			semester = getInput.nextLine().trim().toUpperCase();
 			ses.displayCouse(student, semester);
 		}
 		else if (option.equals("2")) {
 			System.out.println("------------------------------------- ");
 			System.out.println("Display all students of 1 course in 1 semester.");
-			System.out.print("Enter course ID: ");
-			course = getInput.nextLine().trim();
+			do {
+				System.out.print("Enter course ID: ");
+				course = getInput.nextLine().trim().toUpperCase();
+				if (ses.checkExistCourse(course) == false) {
+					System.out.println("Wrong input!");
+				}
+			} while (ses.checkExistCourse(course) == false);
 			System.out.print("Enter semester: ");
-			semester = getInput.nextLine().trim();
+			semester = getInput.nextLine().trim().toUpperCase();
 			ses.displayStudent(course, semester);
 		}
 		else if (option.equals("3")) {
 			System.out.println("------------------------------------- ");
 			System.out.println("Display all courses offered in 1 semester.");
 			System.out.print("Enter semester: ");
-			semester = getInput.nextLine().trim();
-			ses.displayAllCourses(semester);
+			semester = getInput.nextLine().trim().toUpperCase();
+			ses.displayAllCourses(ses,semester);
 		}
 		else {
 			System.out.println("Wrong input!");
